@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Website Form</title>
+    <title>Argo National Data Management Report Form</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -15,15 +15,18 @@
             padding: 20px;
             border-radius: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            max-width: 400px;
+            max-width: 600px;
             margin: auto;
         }
-        input[type="text"], input[type="email"], textarea {
+        input, select, textarea {
             width: 100%;
             padding: 10px;
             margin: 10px 0;
             border: 1px solid #ccc;
             border-radius: 4px;
+        }
+        label {
+            font-weight: bold;
         }
         input[type="submit"] {
             background-color: #28a745;
@@ -39,18 +42,46 @@
     </style>
 </head>
 <body>
-    <h1>Contact Us</h1>
-    <form action="https://example.com/form-handler" method="POST">
-        <label for="name">Name:</label>
-        <input type="text" id="name" name="name" required>
-        
-        <label for="email">Email:</label>
-        <input type="email" id="email" name="email" required>
-        
-        <label for="message">Message:</label>
-        <textarea id="message" name="message" rows="4" required></textarea>
-        
-        <input type="submit" value="Submit">
-    </form>
+
+<h2>Argo National Data Management Report Form</h2>
+
+<form action="submit_report.php" method="POST">
+    <!-- Float Family -->
+    <label for="float_family">Float Family:</label>
+    <select id="float_family" name="float_family">
+        <option value="APEX">APEX</option>
+        <option value="ARVOR">ARVOR</option>
+        <option value="PROVOR">PROVOR</option>
+        <option value="Navis">Navis</option>
+        <option value="BGC Navis">BGC Navis</option>
+        <option value="SOLO/S2A">SOLO/S2A</option>
+        <option value="Deep SOLO">Deep SOLO</option>
+        <option value="Deep Arvor">Deep Arvor</option>
+        <option value="Other">Other</option>
+    </select>
+
+    <!-- Number of Floats -->
+    <label for="num_floats">Number of Floats (approximate):</label>
+    <input type="number" id="num_floats" name="num_floats" required>
+
+    <!-- Sensor Processing -->
+    <label for="num_sensors">How many different sensors are you processing?</label>
+    <input type="number" id="num_sensors" name="num_sensors" required>
+
+    <label for="sensor_type">Types of sensors (comma-separated):</label>
+    <input type="text" id="sensor_type" name="sensor_type" placeholder="e.g., SBE41, SBE61, RBR">
+
+    <!-- Status of BGC Processing -->
+    <label for="bgc_processing">Status of BGC Processing and RTQC Test Implementation:</label>
+    <textarea id="bgc_processing" name="bgc_processing" rows="4" placeholder="Describe your BGC processing status..."></textarea>
+
+    <!-- RBR Data Processing Status -->
+    <label for="rbr_status">What is the status of RBR data processing (if applicable)?</label>
+    <textarea id="rbr_status" name="rbr_status" rows="4" placeholder="Describe the RBR data processing..."></textarea>
+
+    <!-- Submission -->
+    <input type="submit" value="Submit Report">
+</form>
+
 </body>
 </html>
